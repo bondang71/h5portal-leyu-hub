@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>极速电竞 · 简识</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f8fa;
+      color: #1a2b34;
+      line-height: 1.7;
+      padding: 0 1.2rem;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 2.4rem auto 3.6rem;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 8px 28px rgba(0, 50, 60, 0.06);
+      padding: 2rem 1.6rem 2.8rem;
+    }
+
+    @media (min-width: 600px) {
+      body { padding: 0 2rem; }
+      .page { padding: 2.8rem 2.4rem; }
+    }
+
+    /* 网格卡片点缀背景 */
+    .page {
+      background-image: 
+        linear-gradient(90deg, rgba(0, 160, 150, 0.04) 1px, transparent 1px),
+        linear-gradient(rgba(0, 160, 150, 0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+      background-color: white;
+    }
+
+    /* 极简置顶标识 */
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+      color: #00897b;
+      background: #e0f2f1;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      margin-bottom: 1.6rem;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 550;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #0b2a2f;
+      margin-bottom: 0.4rem;
+    }
+
+    @media (min-width: 600px) {
+      h1 { font-size: 2.6rem; }
+    }
+
+    .lead {
+      font-size: 1.05rem;
+      color: #3a5a62;
+      border-left: 3px solid #00a096;
+      padding-left: 1rem;
+      margin: 1rem 0 1.8rem 0;
+      font-weight: 400;
+    }
+
+    .meta-line {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: #6b8a92;
+      margin-bottom: 2.2rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid #ddecec;
+    }
+
+    .meta-line span {
+      background: #eef6f5;
+      padding: 0.1rem 0.7rem;
+      border-radius: 30px;
+    }
+
+    /* 正文卡片式段落 */
+    .text-block {
+      background: #f9fcfb;
+      padding: 1.4rem 1.2rem;
+      border-radius: 20px;
+      margin-bottom: 1.6rem;
+      box-shadow: 0 2px 6px rgba(0, 90, 80, 0.03);
+      border: 1px solid #e2f0ee;
+    }
+
+    .text-block p {
+      margin-bottom: 0.9rem;
+    }
+
+    .text-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .highlight-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #00a096;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .pull-quote {
+      background: #e7f3f1;
+      border-radius: 20px;
+      padding: 1.2rem 1.4rem;
+      margin: 1.6rem 0;
+      font-style: normal;
+      color: #1d4a4f;
+      border-left: 4px solid #00a096;
+      font-size: 1rem;
+      font-weight: 420;
+    }
+
+    .pull-quote::before {
+      content: "“";
+      font-size: 1.8rem;
+      line-height: 0.6;
+      color: #00897b;
+      margin-right: 0.2rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 1.8rem 0;
+    }
+
+    .grid-cards .card {
+      background: white;
+      border: 1px solid #d7e8e5;
+      border-radius: 18px;
+      padding: 1rem 0.9rem;
+      box-shadow: 0 2px 8px rgba(0, 120, 110, 0.04);
+      transition: all 0.1s ease;
+    }
+
+    .grid-cards .card:hover {
+      background: #f4fcf9;
+      border-color: #00a096;
+    }
+
+    .card h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #11555c;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .card h4::before {
+      content: "▹";
+      color: #00a096;
+      margin-right: 6px;
+      font-size: 1rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: #3d636b;
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 480px) {
+      .grid-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .faq-mini {
+      background: #fafdfc;
+      border-radius: 20px;
+      padding: 1rem 1.2rem;
+      margin: 1.8rem 0 1rem;
+      border: 1px solid #d4e6e2;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid #e2efec;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-mini details:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-mini summary {
+      font-weight: 480;
+      color: #124a4f;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini summary::before {
+      content: "+";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background: #d4ece8;
+      color: #006b61;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 18px;
+      font-size: 0.9rem;
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+
+    .faq-mini details[open] summary::before {
+      content: "–";
+    }
+
+    .faq-mini .answer {
+      font-size: 0.9rem;
+      padding: 0.4rem 0 0.2rem 1.8rem;
+      color: #35626b;
+    }
+
+    .visit-sentence {
+      margin: 2.2rem 0 0.6rem;
+      padding: 1rem 1.2rem;
+      background: #eaf5f2;
+      border-radius: 30px;
+      color: #124a4f;
+      font-size: 0.98rem;
+      text-align: center;
+      border: 1px solid #bcd9d4;
+    }
+
+    .visit-sentence a {
+      color: #006b61;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid #00a096;
+      padding-bottom: 1px;
+    }
+
+    .visit-sentence a:hover {
+      background: #c6e3de;
+    }
+
+    .footer-note {
+      margin-top: 2.4rem;
+      font-size: 0.75rem;
+      color: #789aa2;
+      text-align: center;
+      border-top: 1px solid #ddecec;
+      padding-top: 1.6rem;
+      letter-spacing: 0.2px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #c7dbd7;
+      margin: 1.6rem 0;
+    }
+
+    /* 引用提示块 */
+    .tip {
+      background: #e2f0ee;
+      border-radius: 16px;
+      padding: 0.8rem 1rem;
+      font-size: 0.88rem;
+      color: #1f565b;
+      margin: 0.8rem 0 1.2rem;
+    }
+
+    .tip i {
+      font-style: normal;
+      background: #00a096;
+      color: white;
+      font-size: 0.7rem;
+      border-radius: 30px;
+      padding: 0.1rem 0.5rem;
+      margin-right: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="badge">· 简洁识站 ·</div>
+
+  <h1>极速电竞<br>不止是名字</h1>
+
+  <div class="lead">
+    一个想让你少点猜测、快速理解它是什么的网站。
+  </div>
+
+  <div class="meta-line">
+    <span>阅读约 4 分钟</span>
+    <span>栏目 · 站内速览</span>
+  </div>
+
+  <!-- 正文开端 -->
+  <div class="text-block">
+    <p>
+      打开一个陌生的电竞站点，第一件事往往是判断：它提供资讯？数据？社区？还是赛事服务？<br>
+      <span class="highlight-dot"></span>“极速电竞”这个名字放在那里，像是一个提示——它更在意效率与即时反馈。
+    </p>
+    <p>
+      从首页布局来看，它没有堆砌视觉噪音，而是把入口和内容用比较直接的方式排列。如果你熟悉常见的电竞媒体，会发现它刻意减少了跳转层级。
+    </p>
+  </div>
+
+  <!-- 引用提示 -->
+  <div class="pull-quote">
+    快速识别一个站点的意图，有时候只需要看它如何处理“第一屏”。
+  </div>
+
+  <!-- 卡片网格：特点/场景 -->
+  <div class="grid-cards">
+    <div class="card">
+      <h4>即时内容流</h4>
+      <p>赛事结果、战报、短讯更新频率较高，减少等待刷新的时间。</p>
+    </div>
+    <div class="card">
+      <h4>桌面与移动一致</h4>
+      <p>响应式设计，移动端阅读体验与桌面端信息结构基本对齐。</p>
+    </div>
+    <div class="card">
+      <h4>导航收敛</h4>
+      <p>主要分类控制在五组以内，降低选择负担。</p>
+    </div>
+    <div class="card">
+      <h4>直播与数据穿插</h4>
+      <p>在信息流中自然嵌入直播卡片和数据面板，不强制跳转。</p>
+    </div>
+  </div>
+
+  <!-- 多段正文 -->
+  <div class="text-block">
+    <p>
+      如果你是为了快速获取某场对战的结果，或者想了解某个赛区的最新积分，<a href="https://esportsjisu.com">极速电竞</a>的首页流基本能在两次点击内给出答案。它没有用复杂的时间线或者社区话题区去分散注意力，而是把“结果”和“赛程”放在比较靠前的位置。
+    </p>
+    <p>
+      当然，一个站点不可能满足所有需求。至少从命名和内容组织来看，它倾向于为“已经知道自己要看什么”的用户节省时间。如果你只是想随便逛逛，它的推荐模块也足够轻量，不会用弹窗或强提醒干扰。
+    </p>
+  </div>
+
+  <!-- 小提示块 -->
+  <div class="tip">
+    <i>i</i> 如果你习惯在多个平台之间对比数据，可以把极速电竞当作一个快速参考节点——它更偏重呈现，而不是深度分析。
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <details>
+      <summary>这个网站适合哪些人？</summary>
+      <div class="answer">关注赛事结果、赛程变动、以及需要快速浏览多场比赛信息的普通观众或轻度分析用户。</div>
+    </details>
+    <details>
+      <summary>内容更新频率如何？</summary>
+      <div class="answer">以主要赛事日程为节奏，赛前发布预测/对阵，赛后短时内更新比分及简要战报。</div>
+    </details>
+    <details>
+      <summary>需要注册才能阅读吗？</summary>
+      <div class="answer">首页及主要信息流无需登录即可阅读，部分互动或订阅功能可能需注册。</div>
+    </details>
+  </div>
+
+  <!-- 自然嵌入链接的访问句 -->
+  <div class="visit-sentence">
+    如果你对快速获取电竞信息有明确需求，不妨把<a href="https://esportsjisu.com">极速电竞</a>放进你的浏览器书签——它不会在每次打开时都重新向你介绍自己。
+  </div>
+
+  <hr>
+
+  <div class="footer-note">
+    基于简洁博客式视角 · 介绍页 · 风格蓝绿点缀<br>
+    内容独立生成，仅作功能说明
+  </div>
+</div>
+</body>
+</html>
